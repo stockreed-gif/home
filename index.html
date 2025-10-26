@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>식품회사 업무 프로그램</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <h1>식품회사 업무 프로그램</h1>
+    <p>제품 재고, 주문 및 공급업체 정보를 한 곳에서 관리하세요.</p>
+  </header>
+
+  <main>
+    <section class="card" id="inventory-section">
+      <h2>제품 재고 관리</h2>
+      <form id="product-form" class="form-grid">
+        <label>
+          제품명
+          <input type="text" id="product-name" required />
+        </label>
+        <label>
+          카테고리
+          <input type="text" id="product-category" required />
+        </label>
+        <label>
+          재고 수량
+          <input type="number" id="product-stock" min="0" required />
+        </label>
+        <label>
+          단가 (₩)
+          <input type="number" id="product-price" min="0" step="10" required />
+        </label>
+        <button type="submit" class="primary">제품 추가</button>
+      </form>
+
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>제품명</th>
+              <th>카테고리</th>
+              <th>재고</th>
+              <th>단가</th>
+              <th>재고 가액</th>
+              <th>작업</th>
+            </tr>
+          </thead>
+          <tbody id="inventory-body"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="card" id="order-section">
+      <h2>주문 현황</h2>
+      <form id="order-form" class="form-grid">
+        <label>
+          주문명
+          <input type="text" id="order-name" required />
+        </label>
+        <label>
+          담당자
+          <input type="text" id="order-owner" required />
+        </label>
+        <label>
+          납기일
+          <input type="date" id="order-deadline" required />
+        </label>
+        <label>
+          상태
+          <select id="order-status">
+            <option value="진행중">진행중</option>
+            <option value="출고완료">출고완료</option>
+            <option value="보류">보류</option>
+          </select>
+        </label>
+        <button type="submit" class="primary">주문 등록</button>
+      </form>
+
+      <div class="filters">
+        <label>
+          상태 필터
+          <select id="status-filter">
+            <option value="all">전체</option>
+            <option value="진행중">진행중</option>
+            <option value="출고완료">출고완료</option>
+            <option value="보류">보류</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>주문명</th>
+              <th>담당자</th>
+              <th>납기일</th>
+              <th>상태</th>
+              <th>작업</th>
+            </tr>
+          </thead>
+          <tbody id="order-body"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="card" id="supplier-section">
+      <h2>공급업체 관리</h2>
+      <form id="supplier-form" class="form-grid">
+        <label>
+          업체명
+          <input type="text" id="supplier-name" required />
+        </label>
+        <label>
+          담당자
+          <input type="text" id="supplier-contact" required />
+        </label>
+        <label>
+          연락처
+          <input type="tel" id="supplier-phone" required />
+        </label>
+        <label>
+          주요 품목
+          <input type="text" id="supplier-items" required />
+        </label>
+        <button type="submit" class="primary">업체 추가</button>
+      </form>
+
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>업체명</th>
+              <th>담당자</th>
+              <th>연락처</th>
+              <th>주요 품목</th>
+              <th>작업</th>
+            </tr>
+          </thead>
+          <tbody id="supplier-body"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>ⓒ 2024 FreshFoods Co. All rights reserved.</p>
+  </footer>
+
+  <div id="toast" role="status" aria-live="polite"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
